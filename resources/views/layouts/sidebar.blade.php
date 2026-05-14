@@ -1,25 +1,25 @@
      <!-- Left Sidebar Start -->
-            <div class="app-sidebar-menu">
+            <div class="app-sidebar-menu" style="z-index: 1;">
                 <div class="h-100" data-simplebar>
 
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
 
                         <div class="logo-box">
-                            <a href="index.html" class="logo logo-light">
+                            <a href="/" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.png" alt="" height="22">
+                                    <img src={{ asset("assets/images/logoclt_w.png") }}  alt="" height="8">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo.png" alt="" height="26">
+                                    <img src={{asset("assets/images/logoclt_w.png")  }}  alt="" height="45">
                                 </span>
                             </a>
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="/" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.png" alt="" height="22">
+                                    <img src={{ asset("assets/images/logoclt_w.png") }}  alt="" height="8">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo.png" alt="" height="26">
+                                    <img src={{ asset( "assets/images/logoclt_w.png") }} alt="" height="45">
                                 </span>
                             </a>
                         </div>
@@ -29,9 +29,9 @@
                             <li class="menu-title">Menu</li>
 
                                  <li>
-                                <a href="apps-todolist.html" class="tp-link">
+                                <a href="/dashboard" class="tp-link">
                                     <span class="nav-icon">
-                                        <iconify-icon icon="solar:server-minimalistic-bold-duotone"></iconify-icon>
+                                         <iconify-icon icon="solar:widget-6-bold-duotone"></iconify-icon>
                                     </span>
                                     <span class="sidebar-text"> Dashboard </span>
                                 </a>
@@ -46,7 +46,7 @@
                                 </a>
                             </li>
 
-                            <li>
+                            {{-- <li>
                                 <a href="#sidebarDashboards" data-bs-toggle="collapse">
                                     <span class="nav-icon">
                                         <iconify-icon icon="solar:widget-6-bold-duotone"></iconify-icon>
@@ -64,7 +64,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
 
                             {{-- <li class="menu-title mt-2">Apps</li>
 

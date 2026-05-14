@@ -1,0 +1,136 @@
+ .error-text{
+   color: red !important;
+   font-size: 11px;
+   margin-top: 3px;
+ }
+
+ .btn-spinner {
+    position: relative;
+    width: 20px; /* Slightly smaller for buttons */
+    height: 20px;
+    /* Faint white track - lets the button color bleed through slightly */
+    border: 2.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.btn-spinner::after {
+    content: "";
+    position: absolute;
+    /* Inset matches the border width to overlay perfectly */
+    top: -2.5px;
+    left: -2.5px;
+    width: 20px;
+    height: 20px;
+    
+    /* Solid white arc */
+    border: 2.5px solid transparent;
+    border-top: 2.5px solid #ffffff;
+    border-radius: 50%;
+    
+    /* High-quality "Material" ease */
+    animation: smooth-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    box-sizing: border-box;
+}
+
+@keyframes smooth-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+ .header-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.page-header-bg {
+    /* Replace the URL with your preferred image path */
+    background: 
+        linear-gradient(135deg,rgba(1, 120, 23, 0.764) 90%), rgba(105, 224, 1, 0.563) 20%
+        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    
+    background-size: cover;
+    background-position: center;
+    /* background-blend-mode: multiply; */
+    padding: 60px 0 120px 0; /* Increased padding for better visual weight */
+    color: #ffffff;
+   
+}
+
+/* Typography adjustments for the dark background */
+.page-header-bg .text-white {
+    color: #fff !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom Breadcrumb styling to fit the orange background */
+.custom-breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.custom-breadcrumb .breadcrumb-item, 
+.custom-breadcrumb .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.custom-breadcrumb .breadcrumb-item.active {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+/* The Overlap Effect */
+.overlap-cards {
+    margin-top: -160px; /* Pulls the cards upward into the header */
+    position: relative;
+    z-index: 10;
+}
+
+/* Card Styling Improvements */
+.card-inner-surface {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.card-inner-surface:hover {
+    transform: translateY(-5px);
+}
+
+.status-icon-box {
+    color: #ff6a00; /* Matching the theme */
+    opacity: 0.8;
+}
+
+
+
+  .dashboard-header {
+            background: linear-gradient(rgba(1, 195, 101, 0.704), rgb(0, 110, 24)), 
+            url('https://app.clttoolbox.com.au/images/login-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            padding-top: 60px;
+            color: white;
+        }
+
+        /* The "Overlapping" Trick */
+        .overlap-container {
+            margin-top: -90px; /* Pulls the cards up into the header */
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }

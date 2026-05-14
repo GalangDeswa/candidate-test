@@ -7,11 +7,13 @@
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
         <meta name="author" content="Zoyothemes"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+        @vite('resources/js/app.js')
         <!-- App favicon -->
-        <link rel="shortcut icon" href={{ asset("assets/images/logo.png") }} >
+        <link rel="shortcut icon" href={{ asset("assets/images/logoclt.png") }} >
         
         <!-- App css -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+          <link href={{ asset("assets/css/custom.css") }}  rel="stylesheet" type="text/css" id="app-style" />
         <link href={{ asset("assets/css/app.min.css") }}  rel="stylesheet" type="text/css" id="app-style" />
 
         <!-- Icons -->
@@ -44,7 +46,9 @@
         <!-- End Begin Page -->
 
         <!-- Vendor -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+          <script src={{ asset("assets/js/import_check.js") }} ></script>
         <script src={{ asset("assets/libs/jquery/jquery.min.js") }} ></script>
         <script src={{ asset("assets/libs/bootstrap/js/bootstrap.bundle.min.js") }} ></script>
         <script src= {{ asset("assets/libs/iconify-icon/iconify-icon.min.js") }}></script>
@@ -63,6 +67,8 @@
         <!-- App js-->
         <script src={{ asset("assets/js/app.js") }} ></script>
 
+       
+        @include('sweetalert2::index')
     </body>
 
 </html>

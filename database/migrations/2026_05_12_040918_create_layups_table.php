@@ -25,9 +25,9 @@ return new class extends Migration
         // $table->decimal('thickness', 15, 2);
         // $table->integer('ply_count');
 
-        $table->string('species');
-        $table->string('grade');
-        $table->string('revision');
+        $table->string('species')->nullable();
+        $table->string('grade')->nullable();
+        $table->string('revision')->nullable();
 
         $table->enum('status', ['active', 'inactive'])
               ->default('active');

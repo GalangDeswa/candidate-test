@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Exports\SupplierExport;
+use App\Http\Requests\SupplierRequest;
+use App\Imports\SupplierImport;
+use App\Imports\SupplierImportReader;
 use App\Models\Supplier;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use SweetAlert2\Laravel\Swal;
 
 class SupplierController extends Controller
 {
@@ -28,17 +36,25 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+
+    public function generateUniqueCode()
     {
-        $validated = $request->validate([
-            'uid' => 'required|string|max:255|unique:suppliers,uid',
-            'name' => 'required|string|max:255',
-            'contact' => 'nullable|string|max:255',
-            'location' => 'nullable|string|max:255',
-            'material_certificate' => 'nullable|string|max:255',
-            'last_audit' => 'nullable|date',
-            'status' => 'required|string|max:100',
-        ]);
+        do {
+
+            $code = 'SUP-' . now()->format('Ymd') . '-' . strtoupper(Str::random(1));
+        } while (Supplier::where('uid', $code)->exists());
+
+        return $code;
+    }
+
+    public function store(SupplierRequest $request)
+    {
+
+
+        $validated = $request->validated();
+        $validated['uid'] = $this->generateUniqueCode();
+
+
 
         Supplier::create($validated);
 
@@ -46,6 +62,52 @@ class SupplierController extends Controller
             ->route('supplier.index')
             ->with('success', 'Supplier created successfully.');
     }
+
+
+
+        public function export()
+{
+
+    
+      return Excel::download(
+        new SupplierExport,
+        'suppliers.xlsx'
+    );
+
+}
+
+
+
+
+
+public function import(Request $request)
+{
+    try{
+        $request->validate([
+        'file' => ['required', 'mimes:xlsx,xls,csv']
+    ]);
+
+    Excel::import(
+        new SupplierImport,
+        request()->file('file')
+    );
+
+    return back()->with(
+        'success',
+        'supplier imported successfully'
+    );
+
+    }catch(\Throwable $th){
+    //    return back()->with(
+    //     'error',$th->getMessage()
+    //    );
+    dd($th);
+    }
+    
+}
+
+
+
 
     /**
      * Display the specified resource.
@@ -66,19 +128,12 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(SupplierRequest $request, Supplier $supplier)
     {
-        $validated = $request->validate([
-            'uid' => 'required|string|max:255|unique:suppliers,uid,' . $supplier->id,
-            'name' => 'required|string|max:255',
-            'contact' => 'nullable|string|max:255',
-            'location' => 'nullable|string|max:255',
-            'material_certificate' => 'nullable|string|max:255',
-            'last_audit' => 'nullable|date',
-            'status' => 'required|string|max:100',
-        ]);
+        $validated = $request->validated();
 
         $supplier->update($validated);
+     
 
         return redirect()
             ->route('supplier.index')

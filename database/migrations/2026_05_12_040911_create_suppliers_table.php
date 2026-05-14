@@ -22,7 +22,7 @@ return new class extends Migration
 
         $table->string('material_certificate')->nullable();
 
-        $table->timestamp('last_audit')->nullable();
+        $table->date('last_audit')->nullable();
 
         $table->enum('status', ['active', 'inactive'])
               ->default('active');

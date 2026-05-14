@@ -18,13 +18,13 @@ return new class extends Migration
               ->constrained('layups')
               ->onDelete('cascade');
 
-        $table->integer('layer_order')->unique();
+        $table->integer('layer_order');
 
         $table->decimal('thickness', 15, 2);
         $table->decimal('width', 15, 2);
         $table->decimal('angle', 15, 2);
 
-        $table->string('grade');
+        $table->string('grade')->nullable();
 
         $table->timestamps();
     });

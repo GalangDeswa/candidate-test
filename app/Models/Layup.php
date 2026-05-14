@@ -22,7 +22,8 @@ class Layup extends Model
     }
 
     public function layers()
-{
-    return $this->hasMany(Layer::class);
-}
+    {
+        return $this->hasMany(Layer::class);
+    }
+    
 }

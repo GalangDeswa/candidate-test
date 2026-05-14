@@ -15,4 +15,9 @@ class Supplier extends Model
         'last_audit',
         'status',
     ];
+
+    public function layups()
+    {
+        return $this->hasMany(Layup::class);
+    }
 }
